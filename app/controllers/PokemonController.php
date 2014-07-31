@@ -2,20 +2,33 @@
 
 class PokemonController extends BaseController {
 
+	public function getPokemon() {
+		Return View::make('pokemon_index');
+	}
+
 	# Handler for queries that just involve searching for a single Pokemon via its name
-	public function handle_name_query() {
-		// Find query (checking query presence mostly as sanity check)
-		if (Input::has('query')) {
-			$input = Input::get('query');
+	public function postPokemon() {
+
+		$input = Input::get('query');
+
+		if ($input) {
+			// Try to search for query in pokemon table.
 			try {
 				$pokemon = Pokemon::where('name', '=', $input)->firstOrFail();
-				return Redirect::to('/pokemon' . $pokemon->URI)->with('name', $pokemon->name);
-			} catch (Exception $e) {
-				throw $e;
+			} 
+			catch (Exception $e) { // No query found
+				return Redirect::to('/pokemon')->with('flash_message', 'No results found');
 			}
+			// Query found 
+			return Redirect::to('/pokemon/' . $pokemon->URI)->with('pokemon', $pokemon->jsonSerialize());
 		}
+		// No input provided (which should never happen via post, but just in case...)
 		else
-			return View::make('pokemon');
+			return View::make('pokemon_index');
+	}
+
+	public function displayPokemon() {
+
 	}
 	
 }

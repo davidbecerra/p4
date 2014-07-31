@@ -9,21 +9,25 @@ Route::get('/', 'HomeController@showWelcome');
 /*-------------------------------------------------------------------------------------------------
 | Search page for Pokemon
 -------------------------------------------------------------------------------------------------*/
-Route::get('/pokemon', function() {
-	echo "Advanced Pokemon search coming soon!";
-});
-
-
-Route::post('/pokemon', array(
-	'before' => 'csrf',
-	'uses' => 'PokemonController@handle_name_query'
-));
+Route::get('/pokemon', 'PokemonController@getPokemon');
+Route::post('/pokemon', 'PokemonController@postPokemon');
 
 /*-------------------------------------------------------------------------------------------------
 | Display page for particular Pokemon
 -------------------------------------------------------------------------------------------------*/
 Route::get('/pokemon/{nameURI}', function($nameURI) {
-	echo Session::get('name') . " found!";
+	$pokemon = Session::get('pokemon');
+	if (!$pokemon) {
+		try {
+			$pokemon = Pokemon::where('URI', '=', $nameURI)->firstOrFail();
+			$pokemon = $pokemon->jsonSerialize();
+		}
+		catch (Exception $e) {
+			throw $e;
+		}
+	}
+	echo "<img src=" . $pokemon['image'] . ">";
+	echo $pokemon['name'] . " found!";
 });
 
 /*-------------------------------------------------------------------------------------------------
@@ -115,14 +119,14 @@ Route::get('/seed-orm', function() {
 	$squirtle->name = 'Squirtle';
 	$squirtle->index = 7;
 	$squirtle->image = 'http://img.pokemondb.net/artwork/squirtle.jpg';
-	$squirtle->URI = '/squirtle';
+	$squirtle->URI = 'squirtle';
 	$squirtle->save();
 
 	$mr_mime = new Pokemon;
 	$mr_mime->name = 'Mr. Mime';
 	$mr_mime->index = 122;
 	$mr_mime->image = 'http://img.pokemondb.net/artwork/mr-mime.jpg';
-	$mr_mime->URI = '/mr-mime';
+	$mr_mime->URI = 'mr-mime';
 	$mr_mime->save();
 
 	# Types
