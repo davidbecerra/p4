@@ -5,7 +5,7 @@
 
 	<title>@yield('title', 'WebDex')</title>
 
-	<link rel='stylesheet' type='text/css' href='styles/master.css'>
+	<link rel='stylesheet' type='text/css' href= {{ URL::asset('styles/master.css') }}>
 
 	@yield('head')
 
@@ -26,6 +26,8 @@
 			<a href='/signup'>Signup</a>
 		</div>
 	</div>
+
+	<br>
 
 	@yield('content')
 

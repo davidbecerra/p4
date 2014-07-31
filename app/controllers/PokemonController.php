@@ -27,8 +27,20 @@ class PokemonController extends BaseController {
 			return View::make('pokemon_index');
 	}
 
-	public function displayPokemon() {
-
+	public function displayPokemon($nameURI) {
+		$pokemon = Session::get('pokemon');
+		if (!$pokemon) {
+			try {
+				$pokemon = Pokemon::where('URI', '=', $nameURI)->firstOrFail();
+				$pokemon = $pokemon->jsonSerialize();
+			}
+			catch (Exception $e) {
+				throw $e;
+			}
+		}
+		$output = "<img src=".$pokemon['image']."><br><br>";
+		$output .= "<h1>#" . $pokemon['index'] . " " . $pokemon['name'] . "</h1>";
+		return View::make('pokemon_display')->with('output', $output);
 	}
 	
 }

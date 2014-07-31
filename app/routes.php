@@ -15,20 +15,20 @@ Route::post('/pokemon', 'PokemonController@postPokemon');
 /*-------------------------------------------------------------------------------------------------
 | Display page for particular Pokemon
 -------------------------------------------------------------------------------------------------*/
-Route::get('/pokemon/{nameURI}', function($nameURI) {
-	$pokemon = Session::get('pokemon');
-	if (!$pokemon) {
-		try {
-			$pokemon = Pokemon::where('URI', '=', $nameURI)->firstOrFail();
-			$pokemon = $pokemon->jsonSerialize();
-		}
-		catch (Exception $e) {
-			throw $e;
-		}
-	}
-	echo "<img src=" . $pokemon['image'] . ">";
-	echo $pokemon['name'] . " found!";
-});
+Route::get('/pokemon/{nameURI}', 'PokemonController@displayPokemon');
+	// $pokemon = Session::get('pokemon');
+	// if (!$pokemon) {
+	// 	try {
+	// 		$pokemon = Pokemon::where('URI', '=', $nameURI)->firstOrFail();
+	// 		$pokemon = $pokemon->jsonSerialize();
+	// 	}
+	// 	catch (Exception $e) {
+	// 		throw $e;
+	// 	}
+	// }
+	// echo "<img src=" . $pokemon['image'] . ">";
+	// echo $pokemon['name'] . " found!";
+// });
 
 /*-------------------------------------------------------------------------------------------------
 | Login Page
