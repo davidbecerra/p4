@@ -1,11 +1,33 @@
+body {
+	background-color: pink;
+}
+
+div.logo {
+	background-image:url('http://fc00.deviantart.net/fs71/f/2012/102/f/1/pokeball_sprite_by_creepypasta81691-d4vzl6r.png');
+	background-repeat:repeat-x;
+	float: left;
+	width: 92.5%;
+	height: 30px;
+	/*border: 2px solid black;*/
+	margin-top: 20px;
+}
+div.player-sprite {
+	/*float: right;*/
+}
+
 div.nav-bar {
 	border: 1px solid black;
 }
 
 div.main-nav {
 	float: left;
-	width: 100px
+	width: 1000px
 }
 div.signup-nav {
 	float: right;
+}
+
+img#pokemon-trainer {
+	height: 50px;
+	width: auto;
 }

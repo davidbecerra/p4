@@ -53,6 +53,7 @@ Route::get('/signup', function() {
 * DELETE THE BELOW ROUTES ON LIVE SERVER
 **********************************************************************/
 
+Route::get('/scrape', 'ScraperController@getScrape');
 
 
 /*-------------------------------------------------------------------------------------------------
