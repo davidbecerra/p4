@@ -25,6 +25,8 @@ class CreateTables extends Migration {
 			$table->smallInteger('index')->unsigned();
 			$table->string('image');
 			$table->string('URI');
+			$table->string('height');
+			$table->string('weight');
 		});
 
 		Schema::create('types', function($table) {
@@ -47,11 +49,12 @@ class CreateTables extends Migration {
 
 			# General data
 			$table->string('name');
-			$table->smallInteger('power')->unsigned();
-			$table->smallInteger('accuracy')->unsigned();
-			$table->tinyInteger('PP')->unsigned();
-			$table->enum('category', array('special', 'physical'));
+			$table->smallInteger('power');
+			$table->smallInteger('accuracy');
+			$table->string('PP');
+			$table->enum('category', array('special', 'physical', 'status'));
 			$table->text('effect');
+			$table->text('target');
 
 			# Define foreign key
 			$table->integer('type_id')->unsigned(); 
@@ -113,7 +116,30 @@ class CreateTables extends Migration {
 	 */
 	public function down()
 	{
-		// Drop tables
+		# Drop foreign keys
+		Schema::table('moves', function($table) {
+			$table->dropForeign('moves_type_id_foreign');
+		});
+		Schema::table('move_pokemon', function($table) {
+			$table->dropForeign('move_pokemon_pokemon_id_foreign');
+		});
+		Schema::table('move_pokemon', function($table) {
+			$table->dropForeign('move_pokemon_move_id_foreign');
+		});
+		Schema::table('pokemon_type', function($table) {
+			$table->dropForeign('pokemon_type_pokemon_id_foreign');
+		});
+		Schema::table('pokemon_type', function($table) {
+			$table->dropForeign('pokemon_type_type_id_foreign');
+		});
+		Schema::table('ability_pokemon', function($table) {
+			$table->dropForeign('ability_pokemon_pokemon_id_foreign');
+		});		
+		Schema::table('ability_pokemon', function($table) {
+			$table->dropForeign('ability_pokemon_ability_id_foreign');
+		});
+
+		# Drop tables
 		Schema::drop('move_pokemon');
 		Schema::drop('pokemon_type');
 		Schema::drop('ability_pokemon');
