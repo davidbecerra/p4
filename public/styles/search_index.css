@@ -10,7 +10,24 @@ div.results-right {
 	border-radius: 10px;
 	width: 50%;
 	max-width: 50%;
-	height: 400px;
+	height: 500px;
 	overflow: scroll;
 	overflow-x: hidden;
+}
+
+.results {
+	text-align: center;
+}
+
+li.results {
+	width: 100px;
+	display: inline-block;
+	margin: 20px;
+}
+
+img.results {
+	width: auto;
+	height: auto;
+	max-width: 100px;
+	max-height: 100px;
 }

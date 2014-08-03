@@ -11,10 +11,8 @@ Search for Pok&eacute;mon
 
 @section('content')
 
-<h1>Pokemon!!</h1>
-
-
 	<div class='search-wrapper'>
+		<h3>Basic Search: </h3>
 		{{ Form::open(array('url' => '/', 'method' => 'POST')) }}
 
 			{{ Form::text('query', null, array('placeholder' => 'Enter Pok&eacute;mon name', 'required'))}}
@@ -23,7 +21,7 @@ Search for Pok&eacute;mon
 		
 		{{ Form::close() }}
 
-		Advanced Search
+		<h3>Advanced Search: </h3>
 		{{ Form::open(array('url' => '/pokemon', 'method' => 'POST'))}}
 			{{ $output }}
 			{{ Form::submit('Search')}}
@@ -31,5 +29,8 @@ Search for Pok&eacute;mon
 	</div>
 
 	<div class='results-right'>
+		@if (isset($query_results))
+			{{ $query_results }}
+		@endif
 	</div>
 @stop

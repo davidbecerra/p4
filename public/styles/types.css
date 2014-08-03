@@ -1,8 +1,8 @@
-ul.type-list {
+ul {
 	list-style-type: none;
 }
 
-li {
+li.type-list {
 	display: inline-block;
 	width: 200px;
 }
