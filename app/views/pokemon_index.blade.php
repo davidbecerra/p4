@@ -6,26 +6,33 @@ Search for Pok&eacute;mon
 
 @section('head')
 <link rel="stylesheet" type="text/css" href={{ URL::asset('styles/types.css') }}>
-<link rel="stylesheet" type="text/css" href={{ URL::asset('styles/search_index.css') }}>
+<link rel="stylesheet" type="text/css" href={{ URL::asset('styles/pokemon_index.css') }}>
 @stop
 
 @section('content')
 
 	<div class='search-wrapper'>
-		<h3>Basic Search: </h3>
-		{{ Form::open(array('url' => '/', 'method' => 'POST')) }}
+		<fieldset class='search'>
+			<!-- <legend><h3>Basic Search:</h3></legend> -->
+			<h3>Basic Search: </h3>
+			{{ Form::open(array('url' => '/', 'method' => 'POST')) }}
+				{{ Form::text('query', null, array('placeholder' => 'Enter Pok&eacute;mon name', 'required'))}}
+			
+				{{ Form::submit('Search') }}
+			
+			{{ Form::close() }}
+		</fieldset>
 
-			{{ Form::text('query', null, array('placeholder' => 'Enter Pok&eacute;mon name', 'required'))}}
-		
-			{{ Form::submit('Search') }}
-		
-		{{ Form::close() }}
+		<br>
 
-		<h3>Advanced Search: </h3>
-		{{ Form::open(array('url' => '/pokemon', 'method' => 'POST'))}}
-			{{ $output }}
-			{{ Form::submit('Search')}}
-		{{ Form::close() }}
+		<fieldset class='search'>
+			<!-- <legend><h3>Advanced Search: </h3></legend> -->
+			<h3>Advanced Search: </h3>
+			{{ Form::open(array('url' => '/pokemon', 'method' => 'POST'))}}
+				{{ $output }}
+				{{ Form::submit('Search')}}
+			{{ Form::close() }}
+		</fieldset>
 	</div>
 
 	<div class='results-right'>

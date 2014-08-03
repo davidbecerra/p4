@@ -13,6 +13,7 @@ div.results-right {
 	height: 500px;
 	overflow: scroll;
 	overflow-x: hidden;
+	box-shadow: 0px 0px 4px 2px #aaaaaa;
 }
 
 .results {
@@ -30,4 +31,14 @@ img.results {
 	height: auto;
 	max-width: 100px;
 	max-height: 100px;
+}
+
+fieldset {
+	/*padding: 0;*/
+}
+
+fieldset.search {
+	box-shadow: 0px 0px 4px 2px #aaaaaa;
+	background-color: white;
+	border-radius: 20px;
 }

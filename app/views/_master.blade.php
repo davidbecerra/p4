@@ -31,7 +31,7 @@
 	<div class='nav-bar'>
 		<ul class='main-nav'>
 			<li class='nav'><a href='/' class='nav first'>Home</a></li>
-			<li class='nav'><a href='/pokemon' class='nav'>Pokemon</a></li>
+			<li class='nav'><a href='/pokemon' class='nav'>Pok&eacute;mon</a></li>
 		</ul>
 	</div>
 

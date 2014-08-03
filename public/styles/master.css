@@ -1,5 +1,5 @@
 body {
-	background-color: #C2FFAD;
+	background-color: #EFFFE7;
 	padding: 0;
 	margin: 0;
 	overflow-x: hidden;
@@ -25,9 +25,10 @@ img#pokemon-trainer {
 --------------------------------------------------------------------------------------------------------------*/
 
 div.nav-bar {
-	background-color: #98bf21;
+	background-color: #4C4C4C;
 	float: left;
 	width: 100%;
+	border: 1px solid black;
 }
 
 
@@ -46,6 +47,7 @@ li.nav {
 
 a.nav {
 	border-right: 1px solid black;
+	border-left: 2px solid #373B3F;
 	width: 86px;
 	text-decoration: none;
 	text-align: center;
