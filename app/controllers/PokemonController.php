@@ -27,19 +27,19 @@ class PokemonController extends BaseController {
 
 		$input = Input::except('_token');
 		if ($input) {
-			# Try to search for query in pokemon table.
-			try {
-				$pokemon_list = Pokemon::whereHas('types', function($query) use ($input) {
-					foreach ($input as $type) {
-						$query->where('name', '=', $type);
-					}
-				})->get();
-				// $type = Type::where('name', '=', array_pop($input))->with('pokemon')->firstOrFail();
-			} 
-			catch (Exception $e) { # No query found
-				// throw $e;
-				return Redirect::to('/pokemon')->with('flash_message', 'No results found');
+			# Search for query in pokemon table.
+			$pokemon_list = new Pokemon;
+			foreach ($input as $type) {
+				$pokemon_list = $pokemon_list->whereHas('types', function($query) use ($type) {
+					$query->where('name', '=', $type);
+				});
 			}
+			$pokemon_list = $pokemon_list->get();
+			
+			# If no results found, return to page
+				if ($pokemon_list->isEmpty())
+					return Redirect::to('/pokemon')->with('flash_message', 'No results found');
+
 			# Query found
 			$query_results = '<ul>';
 			$results_class = "class='results'";
