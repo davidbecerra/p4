@@ -2,9 +2,9 @@
 
 @section('content')
 
-	{{ Form::open(array('url' => '/pokemon', 'method' => 'POST'))}}
+	{{ Form::open(array('url' => '/', 'method' => 'POST'))}}
 
-		{{ Form::text('query', null, array('placeholder' => 'Enter Pok&eacute;mon name', 'required')) }}
+		Search for a Pok&eacute;mon: {{ Form::text('query', null, array('placeholder' => 'Enter Pok&eacute;mon name', 'required')) }}
 
 		{{ Form::submit('Search') }}
 

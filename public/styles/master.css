@@ -1,33 +1,74 @@
 body {
-	background-color: pink;
+	background-color: #C2FFAD;
+	padding: 0;
+	margin: 0;
+	overflow-x: hidden;
 }
 
 div.logo {
 	background-image:url('http://fc00.deviantart.net/fs71/f/2012/102/f/1/pokeball_sprite_by_creepypasta81691-d4vzl6r.png');
 	background-repeat:repeat-x;
 	float: left;
-	width: 92.5%;
+	width: 93%;
 	height: 30px;
-	/*border: 2px solid black;*/
 	margin-top: 20px;
-}
-div.player-sprite {
-	/*float: right;*/
-}
-
-div.nav-bar {
-	border: 1px solid black;
-}
-
-div.main-nav {
-	float: left;
-	width: 1000px
-}
-div.signup-nav {
-	float: right;
+	opacity: 0.85;
 }
 
 img#pokemon-trainer {
 	height: 50px;
 	width: auto;
+}
+
+/*-------------------------------------------------------------------------------------------------------------
+| Navigation Bar 
+--------------------------------------------------------------------------------------------------------------*/
+
+div.nav-bar {
+	background-color: #98bf21;
+	float: left;
+	width: 100%;
+}
+
+
+ul.main-nav {
+	list-style-type: none;
+	float: left;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	margin-left: 28px;
+}
+
+li.nav {
+	display: inline;
+}
+
+a.nav {
+	border-right: 1px solid black;
+	width: 86px;
+	text-decoration: none;
+	text-align: center;
+	padding: 10px;
+	font-weight: bold;
+	color: white;
+	float: left;
+}
+
+a.nav.first {
+	border-left: 1px solid black;
+}
+
+a.nav:hover {
+	background-color: red;
+}
+
+
+/*-------------------------------------------------------------------------------------------------------------
+| Body/Content
+--------------------------------------------------------------------------------------------------------------*/
+
+div.content-wrapper {
+	margin: 8px;
+	padding-top: 2px;
 }

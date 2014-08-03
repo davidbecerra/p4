@@ -1,0 +1,16 @@
+div.search-wrapper {
+	float: left;
+	width: 49%;
+}
+
+div.results-right {
+	background-color: white;
+	float: right;
+	border: 2px solid grey;
+	border-radius: 10px;
+	width: 50%;
+	max-width: 50%;
+	height: 400px;
+	overflow: scroll;
+	overflow-x: hidden;
+}
