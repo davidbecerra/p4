@@ -2,3 +2,7 @@ div.pokemon-basic {
 	float: left;
 	border: 2px solid black;
 }
+
+div.general-table {
+	border: 1px solid black;
+}

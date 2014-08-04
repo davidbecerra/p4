@@ -8,7 +8,7 @@ class PokemonController extends BaseController {
 		$types = Type::all();
 		$output = '<ul class="type-list">';
 		foreach ($types as $type) {
-			$output .= "<li class='type-list'><span class='type-container background-color-" . strtolower($type->name) . "'>$type->name</span>";
+			$output .= "<li class='type-list'><span class='type-container large-pill background-color-" . strtolower($type->name) . "'>$type->name</span>";
 			$name = strtolower($type->name);
 			$output .= "<input type='checkbox' value=$name name=$name></li>";
 		}
@@ -34,20 +34,28 @@ class PokemonController extends BaseController {
 					$query->where('name', '=', $type);
 				});
 			}
-			$pokemon_list = $pokemon_list->get();
+			$pokemon_list = $pokemon_list->with('types')->get();
 			
 			# If no results found, return to page
 				if ($pokemon_list->isEmpty())
 					return Redirect::to('/pokemon')->with('flash_message', 'No results found');
 
-			# Query found
+			# Query found - create list of each Pokemon retrieved
 			$query_results = '<ul>';
 			$results_class = "class='results'";
+			# Include image, name, and type of each Pokemon
 			foreach ($pokemon_list as $pokemon) {
 				$query_results .= "<li $results_class><a href=/pokemon/$pokemon->URI>";				
-				$query_results .= "<img src=$pokemon->image $results_class>$pokemon->name</a></li>";
+				$query_results .= "<img src=$pokemon->image $results_class>$pokemon->index. $pokemon->name</a><br>";
+				foreach ($pokemon->types as $type) {
+					$query_results .= "<span class='type-container inline-type background-color-" . strtolower($type->name) . "'>";
+					$query_results .= "$type->name</span>";
+				}
+				$query_results .= "</li>";
 			}
 			$query_results .= "</ul>";
+
+			# Get the view data of the page (getPokemon does a query on all types. Need that data)
 			$view = $this->getPokemon();
 			return $view->with('query_results', $query_results);
 		}
@@ -61,24 +69,24 @@ class PokemonController extends BaseController {
 		$pokemon = Session::get('pokemon');
 		if (!$pokemon) {
 			try {
-				$pokemon = Pokemon::where('URI', '=', $nameURI)->firstOrFail();
+				$pokemon = Pokemon::where('URI', '=', $nameURI)->with('abilities', 'moves', 'types')->firstOrFail();
 			}
 			catch (Exception $e) { // Page not found (someone type URI of invalid pokemon)
 				throw $e;
 			}
 		}
-		$name = $pokemon->name;
-		$content = "<img src=".$pokemon->image."><br><br>";
-		$content .= "<h1>#" . $pokemon->index . " " . $pokemon->name . "</h1>";
-		$content .= "<b>Weight</b>: $pokemon->weight<br>";
-		$content .= "<b>Height</b>: $pokemon->height<br><br>";
-		$moves = '';
-		foreach ($pokemon->moves as $move) {
-			$level = $move->pivot->level;
-			$content .= "$level | $move->name | $move->power | $move->accuracy | $move->PP | $move->effect<br>";
-		}
-		$output = array('name' => $name, 'content' => $content);
-		return View::make('pokemon_display')->with('output', $output);
+		// $name = $pokemon->name;
+		// $content = "<img src=".$pokemon->image."><br><br>";
+		// $content .= "<h1>#" . $pokemon->index . " " . $pokemon->name . "</h1>";
+		// $content .= "<b>Weight</b>: $pokemon->weight<br>";
+		// $content .= "<b>Height</b>: $pokemon->height<br><br>";
+		// $moves = '';
+		// foreach ($pokemon->moves as $move) {
+		// 	$level = $move->pivot->level;
+		// 	$content .= "$level | $move->name | $move->power | $move->accuracy | $move->PP | $move->effect<br>";
+		// }
+		// $output = array('name' => $name, 'content' => $content);
+		return View::make('pokemon_display')->with('pokemon', $pokemon);
 	}
 	
 }

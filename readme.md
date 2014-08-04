@@ -1,1 +1,2 @@
 * Search many-to-many table based on multiple constraints on related table: http://stackoverflow.com/questions/22298935/laravel-eloquent-orm-wherehas-and-where-in-foreach
+* Website icon art: Elisabeth Meyer

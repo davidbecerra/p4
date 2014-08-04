@@ -26,7 +26,7 @@ class HomeController extends BaseController {
 		if ($input) {
 			# Try to search for query in pokemon table.
 			try {
-				$pokemon = Pokemon::where('name', '=', $input)->firstOrFail();
+				$pokemon = Pokemon::where('name', '=', $input)->with('abilities', 'moves')->firstOrFail();
 			} 
 			# No Query found error
 			catch (Exception $e) {

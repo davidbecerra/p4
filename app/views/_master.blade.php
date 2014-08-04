@@ -6,7 +6,7 @@
 	<title>@yield('title', 'WebDex')</title>
 
 	<link rel='stylesheet' type='text/css' href= {{ URL::asset('styles/master.css') }}>
-	<link href={{ URL::asset('pokeball.ico') }} rel="shortcut icon" />
+	<link href={{ URL::asset('pokeball2.ico') }} rel="shortcut icon" />
 	@yield('head')
 
 </head>
