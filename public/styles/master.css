@@ -105,80 +105,80 @@ span.inline-type {
 	border: 1px solid #5E5E5E;
 }
 
-.background-color-bug {
+.background-color-bug, #background-color-bug {
 	background-color: #A3D119;
 	color: white;
 }
-.background-color-dark {
+.background-color-dark, #background-color-dark {
 	background-color: #191919;
 	color: white;
 }
-.background-color-dragon {
+.background-color-dragon, #background-color-dragon {
 	background-color: #8A00E6;
 	color: white;
 }
-.background-color-electric {
+.background-color-electric, #background-color-electric {
 	background-color: #FFCC00;
 	color: white;
 }
-.background-color-fairy {
+.background-color-fairy, #background-color-fairy {
 	background-color: #FFADEB;
 	color: black;
 }
-.background-color-fighting {
+.background-color-fighting, #background-color-fighting {
 	background-color: #990000;
 	color: white;
 }
-.background-color-fire {
+.background-color-fire, #background-color-fire {
 	background-color: #FF4719;
 	color: white;
 }
-.background-color-flying {
+.background-color-flying, #background-color-flying {
 	color: white;
 	background-color: #0066FF;
 }
-.background-color-ghost {
+.background-color-ghost, #background-color-ghost {
 	color: white;
 	background-color: #8A2E8A;
 }
-.background-color-grass {
+.background-color-grass, #background-color-grass {
 	color: white;
 	background-color: #19D119;
 }
-.background-color-ground {
+.background-color-ground, #background-color-ground {
 	background-color: #FFE271;
 	color: black;
 }
-.background-color-ice {
+.background-color-ice, #background-color-ice {
 	background-color: #66FFFF;
 	color: black;
 }
-.background-color-normal {
+.background-color-normal, #background-color-normal {
 	color: white;
-	background-color: #A6A6A6;
+	background-color: #ADAD85;
 }
 
-.background-color-poison {
+.background-color-poison, #background-color-poison {
 	color: white;
 	background-color: #D119A3;
 }
 
-.background-color-psychic {
+.background-color-psychic, #background-color-psychic {
 	color: white;
 	background-color: #FF3399;
 }
 
-.background-color-rock {
+.background-color-rock, #background-color-rock {
 	color: white;
 	background-color: #AD8533;
 }
 
-.background-color-steel {
+.background-color-steel, #background-color-steel {
 	background-color: #CCCCFF;
 	color: black;
 }
 
-.background-color-water {
+.background-color-water, #background-color-water {
 	color: white;
 	background-color: #0066FF;
 }
