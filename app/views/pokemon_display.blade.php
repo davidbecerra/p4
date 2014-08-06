@@ -10,33 +10,40 @@ Pok&eacute;mon | {{ $pokemon->name }}
 
 
 @section('content')
-
+	
 	<div class='pokemon-basic'>
-		<img src={{ $pokemon->image}}><br>
-		<span class='pokemon-name'>{{ $pokemon->name }} #{{ $pokemon->index }}</span>
-	</div>
-	<br><br>
 
-	<div class='general-table'>
-		<table class='general-table'>
-			<tbody>
-				<?php $type1 = $pokemon->types->pop()->name ?>
-				<tr><td>Type:<br>
-					<span class="type-container inline-type background-color-{{ strtolower($type1) }}"> {{ $type1 }}</span>
-					@if ($pokemon->types->count() > 0)
-						<?php $type2 = $pokemon->types->pop()->name ?>
-						<span class="type-container inline-type background-color-{{ strtolower($type2) }}"> {{ $type2 }}</span>
+		<div class='pokemon-image'>
+			<span class='pokemon-name'><h1>{{ $pokemon->name }} #{{ $pokemon->index }}</h1></span><br>
+			<img src={{ $pokemon->image}}><br>
+		</div>
+
+		<div class='general-table'>
+			<table class='general-table'>
+				<thead>
+					<tr><th colspan='2'>General Information</th></tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><b>Type:</b></td>
+						<td>
+							@foreach ($pokemon->types as $type)
+								<span class="type-container inline-type background-color-{{ strtolower($type->name) }}"> {{ $type->name }}</span>
+							@endforeach
+						</td>
+					</tr>
+					<?php $ability_name = $pokemon->abilities->pop()->name ?>
+					@if ($pokemon->abilities->count() > 0)
+						<?php $ability_name .= "<br>" . $pokemon->abilities->pop()->name ?>
 					@endif
-				</td></tr>
-				<?php $ability_name = $pokemon->abilities->pop()->name ?>
-				@if ($pokemon->abilities->count() > 0)
-					<?php $ability_name .= "/" . $pokemon->abilities->pop()->name ?>
-				@endif
-				<tr><td>Ability: {{ $ability_name }}</td></tr>
-				<tr><td>Weight: {{ $pokemon->weight }}</td></tr>
-				<tr><td>Height: {{ $pokemon->height }}</td></tr>
-			</tbody>
-		</table>
+					<tr><td><b>Ability:</b></td><td>{{ $ability_name }}</td></tr>
+					<tr><td><b>Weight:</b></td><td>{{ $pokemon->weight }}</td></tr>
+					<tr><td><b>Height:</b></td><td>{{ $pokemon->height }}</td></tr>
+				</tbody>
+				<tfoot><tr><td><br></td></tr></tfoot>	
+			</table>
+		</div>
+
 	</div>
 
 	<br><br>

@@ -1,8 +1,64 @@
 div.pokemon-basic {
-	float: left;
 	border: 2px solid black;
+	padding: 50px 100px;
 }
 
+div.pokemon-image {
+	display: inline-block;
+	height: 400px;
+	width: 400px;
+	margin-left: 100px;
+}
+
+div.pokemon-image img {
+	width: 300px;
+	height: auto;
+	margin-left: 50px;
+	box-shadow: 0px 0px 3px 1px #AAA;
+}
+
+span.pokemon-name h1 {
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+}
+
+/*-------------------------------------------------------------------------------------------------------------
+| General Table
+--------------------------------------------------------------------------------------------------------------*/
+
 div.general-table {
-	border: 1px solid black;
+	border: 1px solid #AAA;
+	float: right;
+	margin-right: 100px;
+	background-color: #FF8484;
+	border-radius: 20px;
+	box-shadow: 0px 0px 4px 2px #AAA
+}
+
+table.general-table {
+	width: 400px;
+	height: 400px;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+table.general-table thead {
+	border-radius: 20px;
+	line-height: 50px;
+	color: white;
+	font-size: 130%;
+}
+
+table.general-table tbody tr td {
+	border: 3px solid #C6C6C6;
+	background-color: white;
+}
+
+/*--------------------------------------------------------------------------------------------------------------*/
+
+div.moves-table {
+/*	display: inline-block;
+	border: 1px solid green;
+	width: 500px;*/
 }

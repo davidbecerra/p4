@@ -46,7 +46,7 @@ class PokemonController extends BaseController {
 			# Include image, name, and type of each Pokemon
 			foreach ($pokemon_list as $pokemon) {
 				$query_results .= "<li $results_class><a href=/pokemon/$pokemon->URI>";				
-				$query_results .= "<img src=$pokemon->image $results_class>$pokemon->index. $pokemon->name</a><br>";
+				$query_results .= "<img src=$pokemon->image $results_class><br>$pokemon->index. $pokemon->name</a><br>";
 				foreach ($pokemon->types as $type) {
 					$query_results .= "<span class='type-container inline-type background-color-" . strtolower($type->name) . "'>";
 					$query_results .= "$type->name</span>";

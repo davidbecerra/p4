@@ -99,6 +99,7 @@ span.large-pill {
 
 span.inline-type {
 	width: 47%;
+	max-width: 110px;
 	line-height: 24px;
 	font-size: 90%;
 	border: 1px solid #5E5E5E;
