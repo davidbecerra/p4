@@ -17,6 +17,12 @@ img#pokemon-trainer {
 	width: auto;
 }
 
+.flash-message {
+	z-index: 1;
+	background-color: yellow;
+	text-align: center;
+}
+
 /*-------------------------------------------------------------------------------------------------------------
 | Navigation Bar 
 --------------------------------------------------------------------------------------------------------------*/
@@ -28,11 +34,10 @@ div.nav-bar {
 	border: 1px solid black;
 }
 
-
 ul.main-nav {
 	list-style-type: none;
 	float: left;
-	width: 100%;
+	width: 95%;
 	padding: 0;
 	margin: 0;
 	margin-left: 28px;
@@ -62,6 +67,13 @@ a.nav:hover {
 	background-color: red;
 }
 
+div.nav-user li.nav {
+	float: right;
+}
+
+a.nav.user:hover {
+	background-color: #4C4C4C;
+}
 
 /*-------------------------------------------------------------------------------------------------------------
 | Body/Content

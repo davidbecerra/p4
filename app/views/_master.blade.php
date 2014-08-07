@@ -24,19 +24,27 @@
 		
 	</div>
 
-	@if(Session::get('flash_message'))
-		<div class='flash-message'>{{ Session::get('flash_message') }}</div>
-	@endif
-
 	<div class='nav-bar'>
 		<ul class='main-nav'>
 			<li class='nav'><a href='/' class='nav first'>Home</a></li>
 			<li class='nav'><a href='/pokemon' class='nav'>Pok&eacute;mon</a></li>
+			<div class='nav-user'>
+				@if (Auth::check())
+					<li class='nav'><a href='/logout' class='nav'>Log out</a></li>
+					<li class='nav'><a class='nav user'>{{ Auth::user()->username; }}</a></li>
+				@else
+					<li class='nav'><a href='/signup' class='nav'>Sign up</a></li>
+					<li class='nav'><a href='/login' class='nav'>Log in</a></li>
+				@endif
+			</div>
 		</ul>
 	</div>
 
 	<br><br>
-	
+
+	@if(Session::get('flash_message'))
+		<div class='flash-message'><b>{{ Session::get('flash_message') }}</b></div>
+	@endif
 	<div class='content-wrapper'>
 		@yield('content')
 	</div>

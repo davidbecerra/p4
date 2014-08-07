@@ -89,20 +89,3 @@ Route::filter('csrf', function()
 	}
 });
 
-/*****************************************************************
-|	My Filters
-******************************************************************/
-
-// Route::filter('find_pokemon', function() {
-// 	// Find query (checking query presence mostly as sanity check)
-// 	if (Input::has('query')) {
-// 		$input = Input::get('query');
-// 		try {
-// 			$pokemon = Pokemon::where('name', '=', $input)->firstOrFail();
-// 			return Redirect::to('/pokemon' . $pokemon->URI);
-			
-// 		} catch (Exception $e) {
-// 			echo $e;
-// 		}
-// 	}
-// });
