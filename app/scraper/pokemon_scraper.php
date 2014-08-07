@@ -219,12 +219,12 @@ function scrape_abilities($url) {
 $base_URL = 'http://pokemondb.net';
 
 # Scrape for moves and save data in 'moves.json' file
-// $moves = scrape_moves($base_URL, $base_URL . '/move/all' );
-// file_put_contents('moves.json', json_encode($moves));
+$moves = scrape_moves($base_URL, $base_URL . '/move/all' );
+file_put_contents('moves.json', json_encode($moves));
 
 # Scrape for abilities and save data in 'abilities.json' file
-// $abilities = scrape_abilities('http://www.psypokes.com/lab/abilities.php'); // this URL better for abilities
-// file_put_contents('abilities.json', json_encode($abilities));
+$abilities = scrape_abilities('http://www.psypokes.com/lab/abilities.php'); // this URL better for abilities
+file_put_contents('abilities.json', json_encode($abilities));
 
 # Scrape for pokemon and save data in 'pokemon.json' file
 $pokemon = scrape_pokemon($base_URL, $base_URL . '/pokedex/all');
