@@ -15,6 +15,8 @@ I also implemented user log in and authentication. Initially, I planed to have a
 
 The hardest part was filling my database. I need lots of information for each Pokemon. Creating the script that scraped for the data took a long time. I had to parse through the source of several websites to determine which site organized their Pokemon data the best. In addition, I had to determine how I wanted to best store the data in my database. The scraper I wrote is located in `/app/scraper`.
 
+The default user in the database is `test` with email address `test@user.com` and password `123456`.
+
 ##Outside code
 * Query many-to-many table based on multiple constraints on related table: http://stackoverflow.com/questions/22298935/laravel-eloquent-orm-wherehas-and-where-in-foreach
 * Website icon art: Elisabeth Meyer (friend and artist)
