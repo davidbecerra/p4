@@ -24,7 +24,7 @@ class MoveSeeder extends Seeder {
 			# If no accuracy ('-') set to -1. If infinite accuracy, set to -2
 			if ($move['accuracy'] == '-')
 				$new_move->accuracy = -1;
-			elseif ($move['accuracy'] == '&infin')
+			elseif ($move['accuracy'] == '&infin;')
 				$new_move->accuracy = -2;
 			else
 				$new_move->accuracy = (int) $move['accuracy'];

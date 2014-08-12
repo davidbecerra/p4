@@ -25,7 +25,13 @@ Search for Pok&eacute;mon
 			<h3>Advanced Search: </h3>
 			{{ Form::open(array('url' => '/pokemon', 'method' => 'POST'))}}
 				{{ $output }}
+
+				Order by: {{ Form::select('ordering', array(
+			    'ID', 'Alphabetical'
+				))}}<br><br>
+
 				{{ Form::submit('Search')}}
+
 			{{ Form::close() }}
 		</fieldset>
 	</div>

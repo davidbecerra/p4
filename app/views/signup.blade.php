@@ -5,9 +5,13 @@
 @stop
 
 @section('content')
-<h1>Sign up</h1>
+	<h1>Sign up</h1>
 
-{{ Form::open(array('url' => '/signup', 'method' => 'POST')) }}
+	@foreach($errors->all() as $message)
+		<div class='error'>{{ $message }}</div>
+	@endforeach
+
+	{{ Form::open(array('url' => '/signup', 'method' => 'POST')) }}
 
 		Username:<br>
 		{{ Form::text('username', null, array('required')) }}<br><br>
@@ -20,5 +24,5 @@
 
     {{ Form::submit('Sign up') }}
 
-{{ Form::close() }}
+	{{ Form::close() }}
 @stop

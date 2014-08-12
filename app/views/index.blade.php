@@ -2,12 +2,19 @@
 
 @section('content')
 
-	{{ Form::open(array('url' => '/', 'method' => 'POST'))}}
+	<div class='home-search'>
 
-		Search for a Pok&eacute;mon: {{ Form::text('query', null, array('placeholder' => 'Enter Pok&eacute;mon name', 'required')) }}
+		{{ Form::open(array('url' => '/', 'method' => 'POST'))}}
 
-		{{ Form::submit('Search') }}
+			<b>Search for a Pok&eacute;mon</b><br> {{ Form::text('query', null, array('placeholder' => 'Enter Pok&eacute;mon name', 'required', 'class' => 'form-text')) }}
 
-	{{ Form::close() }}
+			{{ Form::submit('Search') }}
+
+		{{ Form::close() }}
+
+	</div>
+
+	<!-- <img src="http://sudeshx12-pokemon.webs.com/pokedex1.gif"> -->
+
 
 @stop

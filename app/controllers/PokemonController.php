@@ -25,12 +25,12 @@ class PokemonController extends BaseController {
 	# Handler for queries that just involve searching for a single Pokemon via its name
 	public function postPokemon() {
 
-		$input = Input::except('_token');
+		$input = Input::except('_token', 'ordering');
 		if ($input) {
 			# Search for query in pokemon table.
 			$pokemon_list = new Pokemon;
 			foreach ($input as $type) {
-				$pokemon_list = $pokemon_list->whereHas('types', function($query) use ($type) {
+				$pokemon_list = $pokemon_list->orderBy('index')->whereHas('types', function($query) use ($type) {
 					$query->where('name', '=', $type);
 				});
 			}
@@ -75,17 +75,7 @@ class PokemonController extends BaseController {
 				throw $e;
 			}
 		}
-		// $name = $pokemon->name;
-		// $content = "<img src=".$pokemon->image."><br><br>";
-		// $content .= "<h1>#" . $pokemon->index . " " . $pokemon->name . "</h1>";
-		// $content .= "<b>Weight</b>: $pokemon->weight<br>";
-		// $content .= "<b>Height</b>: $pokemon->height<br><br>";
-		// $moves = '';
-		// foreach ($pokemon->moves as $move) {
-		// 	$level = $move->pivot->level;
-		// 	$content .= "$level | $move->name | $move->power | $move->accuracy | $move->PP | $move->effect<br>";
-		// }
-		// $output = array('name' => $name, 'content' => $content);
+
 		return View::make('pokemon_display')->with('pokemon', $pokemon);
 	}
 	

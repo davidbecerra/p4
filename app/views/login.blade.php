@@ -15,7 +15,7 @@
     Password:<br>
     {{ Form::password('password', null, array('required')) }}<br><br>
 
-    {{ Form::checkbox('remember') }}
+    {{ Form::checkbox('remember', 'true', true) }}
     Remember me <br><br>
 
     {{ Form::submit('Log in') }}

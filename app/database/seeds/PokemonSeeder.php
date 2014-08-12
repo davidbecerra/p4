@@ -6,6 +6,9 @@ class PokemonSeeder extends Seeder {
 		# Clear the tables
 		DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 		DB::statement('TRUNCATE pokemon');
+		DB::statement('TRUNCATE move_pokemon');
+		DB::statement('TRUNCATE ability_pokemon');
+		DB::statement('TRUNCATE pokemon_type');
 	
 		# Load pokemon data and store each pokemon into database
 		$json = json_decode(file_get_contents(app_path() . '/database/seeds/pokemon.json'), true);
