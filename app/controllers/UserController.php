@@ -54,9 +54,9 @@ class UserController extends BaseController {
 
 		# Define rules for validation and create validator
 		$rules = array(
-			'username' => 'max:13|unique:users,username|alpha_dash|required',
+			'username' => 'Between:3,13|unique:users,username|alpha_dash|required',
 			'email' => 'email|unique:users,email|required',
-			'password' => 'min:6|required'
+			'password' => 'Between:6,50|alpha_dash|required'
 		);
 		$validator = Validator::make(Input::all(), $rules);
 
