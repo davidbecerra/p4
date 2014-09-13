@@ -26,11 +26,14 @@ class PokemonController extends BaseController {
 	public function postPokemon() {
 
 		$input = Input::except('_token', 'ordering');
+
+ 		$ordering = Input::get('ordering', 'name');
+
 		if ($input) {
 			# Search for query in pokemon table.
 			$pokemon_list = new Pokemon;
 			foreach ($input as $type) {
-				$pokemon_list = $pokemon_list->orderBy('index')->whereHas('types', function($query) use ($type) {
+				$pokemon_list = $pokemon_list->orderBy($ordering)->whereHas('types', function($query) use ($type) {
 					$query->where('name', '=', $type);
 				});
 			}

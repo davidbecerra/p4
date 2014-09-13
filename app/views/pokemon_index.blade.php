@@ -27,7 +27,7 @@ Search for Pok&eacute;mon
 				{{ $output }}
 
 				Order by: {{ Form::select('ordering', array(
-			    'ID', 'Alphabetical'
+			    'index' => 'ID', 'name' => 'Alphabetical'
 				))}}<br><br>
 
 				{{ Form::submit('Search')}}
